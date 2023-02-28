@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Connected;
 use App\Http\Requests\StoreLobbyRequest;
 use App\Http\Resources\LobbyResource;
 use App\Models\Lobby;
@@ -33,6 +34,8 @@ class LobbyController extends Controller
                     'peer_id' => $request->user()->id,
                     'status' => 'connected',
                 ]);
+
+                Connected::dispatch($lobby);
             }
         }
 

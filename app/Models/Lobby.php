@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Lobby extends Model
@@ -26,5 +27,17 @@ class Lobby extends Model
     public function peer(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'peer_id');
+    }
+
+    public function games(): HasMany
+    {
+        return $this->hasMany(Game::class);
+    }
+
+    public function game(): Game
+    {
+        return $this->hasMany(Game::class)
+            ->where('game_over', false)
+            ->first();
     }
 }
