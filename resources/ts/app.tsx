@@ -6,6 +6,7 @@ import {
 import { render } from "solid-js/web";
 import "./bootstrap";
 import "../css/app.css";
+import { LobbyContextProvider } from "./providers/LobbyContextProvider";
 
 createInertiaApp({
   resolveComponent: async (name: string) => {

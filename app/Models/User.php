@@ -42,4 +42,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Lobby::class, 'id', 'host_id');
     }
+
+    public function peer(): BelongsTo
+    {
+        return $this->belongsTo(Lobby::class, 'id', 'peer_id');
+    }
+
+    public function available()
+    {
+        return !$this->host()->exists() && !$this->peer()->exists();
+    }
 }

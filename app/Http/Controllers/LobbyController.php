@@ -29,7 +29,7 @@ class LobbyController extends Controller
         if ($request->user()->peer);
 
         if ($lobby) {
-            if (!$request->user()->peer && !$lobby->peer) {
+            if (!$request->user()->peer && !$lobby->peer()->exists()) {
                 $lobby->update([
                     'peer_id' => $request->user()->id,
                     'status' => 'connected',
