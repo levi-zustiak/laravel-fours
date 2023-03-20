@@ -11,6 +11,7 @@
       "ESNext"
     ],
     "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "module": "es2022",
     "moduleResolution": "node",
     "esModuleInterop": false,
@@ -18,7 +19,6 @@
     "strict": true,
     "skipLibCheck": true,
     "types": [
-      "react",
       "node",
       "vite/client"
     ]
