@@ -1,11 +1,11 @@
 import { Lobby } from "@/types/lobby.types";
-import { Link } from "@inertiajs/react";
+import { Link } from "inertia-solid";
 
 type Props = {
   lobby: Lobby;
 };
 
-export default function Create({ lobby }: Props): JSX.Element {
+export default function Create({ lobby }: Props) {
   const copyLink = () =>
     navigator.clipboard.writeText(
       `${import.meta.env.VITE_APP_URL || ""}/lobby/join/${lobby.id}`,

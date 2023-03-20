@@ -1,11 +1,11 @@
 import { Lobby } from "@/types/lobby.types";
-import { Link } from "@inertiajs/react";
+import { Link } from "inertia-solid";
 
 type Props = {
   lobby: Lobby;
 };
 
-export default function Join({ lobby }: Props): JSX.Element {
+export default function Join({ lobby }: Props) {
   return (
     <div>
       <h1>Join</h1>

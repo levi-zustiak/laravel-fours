@@ -1,11 +1,11 @@
 import { User } from "@/types/user.types";
-import { Link } from "@inertiajs/react";
+import { Link } from "inertia-solid";
 
 type Props = {
   user: User;
 };
 
-export default function Home({ user }: Props): JSX.Element {
+export default function Home({ user }: Props) {
   return (
     <div>
       <h1>Home</h1>
