@@ -1,8 +1,8 @@
-import { router } from "@inertiajs/react";
-import { useState } from "react";
+import { router } from "inertia-solid";
+import { createSignal } from "solid-js";
 
 export default function Register() {
-  const [values, setValues] = useState({
+  const [values, setValues] = createSignal({
     name: "",
     password: "",
   });
@@ -18,17 +18,17 @@ export default function Register() {
 
   const submit = (e) => {
     e.preventDefault();
-    router.post("/register", values);
+    router.post("/register", values());
   };
 
   return (
     <div>
       <h1>Register</h1>
       <form onSubmit={submit}>
-        <input name="name" value={values.name} onChange={handleChange} />
+        <input name="name" value={values().name} onChange={handleChange} />
         <input
           name="password"
-          value={values.password}
+          value={values().password}
           onChange={handleChange}
         />
         <button type="submit">Submit</button>
