@@ -1,10 +1,10 @@
-import { router } from "inertia-solid";
-import { createSignal } from "solid-js";
+import { router } from 'inertia-solid';
+import { createSignal } from 'solid-js';
 
 export default function Register() {
   const [values, setValues] = createSignal({
-    name: "",
-    password: "",
+    name: '',
+    password: '',
   });
 
   const handleChange = ({ target }) => {
@@ -18,7 +18,8 @@ export default function Register() {
 
   const submit = (e) => {
     e.preventDefault();
-    router.post("/register", values());
+
+    router.post('/register', values());
   };
 
   return (

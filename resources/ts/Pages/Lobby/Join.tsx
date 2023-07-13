@@ -1,23 +1,34 @@
-import { Lobby } from "@/types/lobby.types";
-import { Link } from "inertia-solid";
+import { router } from 'inertia-solid';
+import { createStore } from 'solid-js/store';
 
-type Props = {
-  lobby: Lobby;
-};
+export default function Join() {
+  const [values, setValues] = createStore({
+    lobby_id: '',
+  });
 
-export default function Join({ lobby }: Props) {
+  const handleChange = ({ currentTarget }) => {
+    const { name, value } = currentTarget;
+
+    setValues(name, value);
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    router.post(`/lobby/join`, values);
+  };
+
   return (
     <div>
       <h1>Join</h1>
-      <pre>{JSON.stringify(lobby, null, 4)}</pre>
-      <Link
-        href={`/lobby/${lobby.id}`}
-        method="patch"
-        as="button"
-        type="button"
-      >
-        Leave
-      </Link>
+      <form onSubmit={submit}>
+        <input
+          name="lobby_id"
+          value={values.lobby_id}
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }

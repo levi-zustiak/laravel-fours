@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Game;
+use App\Models\Lobby;
+use App\Models\User;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -14,9 +17,13 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+    return (int)$user->id === (int)$id;
 });
 
-Broadcast::channel('test', function () {
+Broadcast::channel('lobbies.{lobby}', function (User $user, Lobby $lobby) {
+    return true;
+});
+
+Broadcast::channel('games.{game}', function (User $user, Game $game) {
     return true;
 });

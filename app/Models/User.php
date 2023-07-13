@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -29,6 +29,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'created_at',
+        'updated_at',
         'password',
         'remember_token',
     ];
@@ -38,13 +40,13 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
-    public function host(): BelongsTo
+    public function host(): HasOne
     {
-        return $this->belongsTo(Lobby::class, 'id', 'host_id');
+        return $this->hasOne(Lobby::class, 'host_id');
     }
 
-    public function peer(): BelongsTo
+    public function peer(): HasOne
     {
-        return $this->belongsTo(Lobby::class, 'id', 'peer_id');
+        return $this->hasOne(Lobby::class, 'peer_id');
     }
 }

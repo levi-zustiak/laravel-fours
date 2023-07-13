@@ -1,16 +1,16 @@
-<?php
+<?PHP
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Lobby extends Model
 {
-    use HasFactory;
-    use HasUuids;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'status',
@@ -18,13 +18,18 @@ class Lobby extends Model
         'peer_id',
     ];
 
-    public function host(): HasOne
+    public function host(): BelongsTo
     {
-        return $this->hasOne(User::class, 'id', 'host_id');
+        return $this->belongsTo(User::class, 'host_id', 'id');
     }
 
-    public function peer(): HasOne
+    public function peer(): BelongsTo
     {
-        return $this->hasOne(User::class, 'id', 'peer_id');
+        return $this->belongsTo(User::class, 'peer_id', 'id');
+    }
+
+    public function game(): HasOne
+    {
+        return $this->hasOne(Game::class);
     }
 }

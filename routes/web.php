@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\LobbyController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,10 +26,17 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/lobby/create', [LobbyController::class, 'index']);
-    Route::get('/lobby/join/{lobby?}', [LobbyController::class, 'edit']);
-    Route::patch('/lobby/{lobby}', [LobbyController::class, 'update']);
-    Route::delete('/lobby/delete/{lobby}', [LobbyController::class, 'destroy']);
+    Route::get('/lobby/create', [LobbyController::class, 'create']);
+    Route::get('/lobby/join', [LobbyController::class, 'join']);
+
+    Route::middleware(['lobby.context'])->group(function () {
+        Route::get('/lobby/{lobby}/join', [LobbyController::class, 'edit']);
+        Route::patch('/lobby/{lobby}', [LobbyController::class, 'update']);
+        Route::delete('/lobby/delete/{lobby}', [LobbyController::class, 'destroy']);
+
+        Route::get('/lobby/{lobby}/game/{game}', [GameController::class, 'index']);
+    });
+
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });
