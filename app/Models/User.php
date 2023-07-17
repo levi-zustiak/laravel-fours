@@ -40,6 +40,10 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
+    public function lobby(): HasOne
+    {
+    }
+
     public function host(): HasOne
     {
         return $this->hasOne(Lobby::class, 'host_id');

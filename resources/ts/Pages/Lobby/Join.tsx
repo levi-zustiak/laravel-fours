@@ -15,7 +15,12 @@ export default function Join() {
   const submit = (e) => {
     e.preventDefault();
 
-    router.post(`/lobby/join`, values);
+    router.post(`/lobby/join`, values, {
+      onStart: (visit) => console.log('start', visit),
+      onProgress: (progress) => console.log('progress', progress),
+      onSuccess: (page) => console.log('success', page),
+      onFinish: (visit) => console.log('finished', visit),
+    });
   };
 
   return (

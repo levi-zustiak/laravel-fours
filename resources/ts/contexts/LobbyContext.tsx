@@ -37,7 +37,7 @@ const LobbyProvider = (props: ParentProps): JSX.Element => {
 
   const wait = (lobbyId: string) => {
     Echo.private(`lobby.${lobbyId}`).listen(
-      'lobby:start',
+      'StartGame',
       ({ lobby, game }: LobbyStartEvent) => {
         console.log(lobby, game);
         // if (lobby) {lobby

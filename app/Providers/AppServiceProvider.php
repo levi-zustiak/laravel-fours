@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Lobby;
+use App\Observers\LobbyObserver;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         JsonResource::withoutWrapping();
+        Lobby::observe(LobbyObserver::class);
     }
 }

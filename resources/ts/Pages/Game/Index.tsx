@@ -2,12 +2,12 @@ import { Board } from '@components/game/Board';
 import { GameContextProvider } from '@contexts/GameContext';
 
 type Props = {
-  game: Game;
+  game: any;
 };
 
 export default function Index({ game }: Props) {
   return (
-    <GameContextProvider initialState={state}>
+    <GameContextProvider initialState={game}>
       <Board />
     </GameContextProvider>
   );

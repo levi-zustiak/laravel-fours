@@ -2,32 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Connected;
 use App\Events\LobbyStart;
+use App\Http\Requests\JoinLobbyRequest;
 use App\Http\Requests\StoreLobbyRequest;
 use App\Http\Resources\LobbyResource;
 use App\Models\Lobby;
+use App\Services\LobbyService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class LobbyController extends Controller
 {
-    public function join(): Response
+    public function __construct(protected LobbyService $lobbyService)
     {
-        return Inertia::render('Lobby/Join');
     }
 
-    public function edit(Request $request, Lobby $lobby)
+    public function connect(JoinLobbyRequest $request)
     {
-        if (!$request->user()->peer && !$lobby->peer()->exists()) {
-            $lobby->update([
-                'peer_id' => $request->user()->id,
-                'status' => 'connected',
-            ]);
-        }
+        $game = $this->lobbyService->connect($request->validated()['lobby_id'], $request->user());
 
-        Connected::dispatch($lobby);
+        return to_route('game.index', ['game' => $game]);
     }
 
     public function update(Lobby $lobby)
@@ -40,14 +35,14 @@ class LobbyController extends Controller
         return to_route('home');
     }
 
+    public function join(): Response
+    {
+        return Inertia::render('Lobby/Join');
+    }
+
     public function create(Request $request): Response
     {
-        $user = $request->user();
-
-        $lobby = $user->host ?: $user->host()->create([
-            'host_id' => $request->user()->id,
-            'status' => 'pending',
-        ]);
+        $lobby = $request->user()->host ?: $request->user()->host()->create();
 
         return Inertia::render('Lobby/Create', [
             'lobby' => new LobbyResource($lobby),

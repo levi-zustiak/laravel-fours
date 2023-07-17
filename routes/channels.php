@@ -20,10 +20,10 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int)$user->id === (int)$id;
 });
 
-Broadcast::channel('lobbies.{lobby}', function (User $user, Lobby $lobby) {
+Broadcast::channel('lobby.{lobby}', function (User $user, Lobby $lobby) {
     return true;
 });
 
-Broadcast::channel('games.{game}', function (User $user, Game $game) {
+Broadcast::channel('game.{game}', function (User $user, Game $game) {
     return true;
 });

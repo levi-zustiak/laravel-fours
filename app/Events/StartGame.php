@@ -2,20 +2,22 @@
 
 namespace App\Events;
 
+use App\Models\Game;
 use App\Models\Lobby;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class StartGame
+class StartGame implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(protected Lobby $lobby)
+    public function __construct(public Lobby $lobby, public Game $game)
     {
     }
 

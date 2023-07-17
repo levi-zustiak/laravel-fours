@@ -28,15 +28,12 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/lobby/create', [LobbyController::class, 'create']);
     Route::get('/lobby/join', [LobbyController::class, 'join']);
+    Route::post('/lobby/join', [LobbyController::class, 'connect']);
 
-    Route::middleware(['lobby.context'])->group(function () {
-        Route::get('/lobby/{lobby}/join', [LobbyController::class, 'edit']);
-        Route::patch('/lobby/{lobby}', [LobbyController::class, 'update']);
-        Route::delete('/lobby/delete/{lobby}', [LobbyController::class, 'destroy']);
+    Route::patch('/lobby/{lobby}', [LobbyController::class, 'update']);
+    Route::delete('/lobby/delete/{lobby}', [LobbyController::class, 'destroy']);
 
-        Route::get('/lobby/{lobby}/game/{game}', [GameController::class, 'index']);
-    });
-
+    Route::get('/game/{game}', [GameController::class, 'index'])->name('game.index');
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });
