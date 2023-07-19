@@ -40,8 +40,14 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
-    public function lobby(): HasOne
+    public function getLobbyAttribute()
     {
+        return $this->lobby()->get();
+    }
+
+    public function lobby()
+    {
+        return Lobby::where('host_id', $this->id)->orWhere('peer_id', $this->id);
     }
 
     public function host(): HasOne
