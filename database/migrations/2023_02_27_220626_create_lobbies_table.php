@@ -13,15 +13,6 @@ return new class extends Migration {
         Schema::create('lobbies', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('status');
-            $table->foreignId('host_id')
-                ->constrained('users')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreignId('peer_id')
-                ->nullable()
-                ->constrained('users')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

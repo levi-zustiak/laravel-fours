@@ -1,16 +1,21 @@
-import { defineConfig } from "vite";
-import laravel from "laravel-vite-plugin";
-import tsconfigPaths from "vite-tsconfig-paths";
-import solidPlugin from "vite-plugin-solid";
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
-  base: "https://localhost/",
+  base: 'https://localhost/',
   plugins: [
     tsconfigPaths(),
     laravel({
-      input: ["resources/css/app.css", "resources/ts/app.tsx"],
+      input: ['resources/css/app.css', 'resources/ts/app.tsx'],
       refresh: true,
     }),
     solidPlugin(),
   ],
+  resolve: {
+    alias: {
+      '@': '/resources/ts',
+    },
+  },
 });
