@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PlayerType;
 use App\Events\LobbyStart;
 use App\Http\Requests\JoinLobbyRequest;
 use App\Http\Requests\StoreLobbyRequest;
@@ -20,15 +21,14 @@ class LobbyController extends Controller
 
     public function connect(JoinLobbyRequest $request)
     {
-        $game = $this->lobbyService->connect($request->validated()['lobby_id'], $request->user());
+        $this->lobbyService->connect($request->validated()['lobby_id'], $request->user());
 
-        return to_route('game.index', ['game' => $game]);
+        return back();
     }
 
     public function update(Lobby $lobby)
     {
         $lobby->update([
-            'peer_id' => null,
             'status' => 'disconnected',
         ]);
 
@@ -42,7 +42,15 @@ class LobbyController extends Controller
 
     public function create(Request $request): Response
     {
-        $lobby = $request->user()->host ?: $request->user()->host()->create();
+//        $lobby = $request->user()->lobbies()->exists();
+//
+//        if ($lobby) {
+//            abort(403, 'User is aleady in a lobby');
+//        }
+
+        $lobby = $request->user()->lobbies()->first() ?: Lobby::create();
+
+        $request->user()->lobbies()->syncWithPivotValues($lobby, ['type' => PlayerType::HOST]);
 
         return Inertia::render('Lobby/Create', [
             'lobby' => new LobbyResource($lobby),

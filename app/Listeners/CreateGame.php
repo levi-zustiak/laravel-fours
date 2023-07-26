@@ -19,7 +19,7 @@ class CreateGame
      */
     public function handle(Connected $event): void
     {
-        $lobby = $event->lobby;
+        $lobby = $event->lobby->load(['hosts', 'peers']);
         $currentPlayer = (bool)random_int(0, 1);
 
         $lobby->game()->create([

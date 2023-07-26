@@ -14,13 +14,11 @@ class Game extends Model
     use BroadcastsEvents, HasFactory, HasUuids;
 
     public $with = [
-        'player_one',
-        'player_two',
+        'playerOne',
+        'playerTwo',
     ];
 
     protected $fillable = [
-        'player_one',
-        'player_two',
         'current_player',
         'in_progress',
         'board',
@@ -41,12 +39,12 @@ class Game extends Model
         return $this->belongsTo(Lobby::class);
     }
 
-    public function player_one(): BelongsTo
+    public function playerOne(): BelongsTo
     {
         return $this->belongsTo(User::class, 'player_one');
     }
 
-    public function player_two(): BelongsTo
+    public function playerTwo(): BelongsTo
     {
         return $this->belongsTo(User::class, 'player_two');
     }

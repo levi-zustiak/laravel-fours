@@ -7,6 +7,7 @@ use App\Enums\PlayerType;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -22,19 +23,16 @@ class Lobby extends Model
         'status' => LobbyStatus::class,
     ];
 
-    public function host(): BelongsToMany
+    public function hosts(): BelongsToMany
     {
         return $this->players()->wherePivot('type', PlayerType::HOST);
-    }
 
-    public function players(): BelongsToMany
+    public function peer()
     {
-        return $this->belongsToMany(User::class, 'players')
-            ->using(Player::class)
-            ->withPivot('type');
+        return $this->peers()->first();
     }
 
-    public function peer(): BelongsToMany
+    public function peers(): BelongsToMany
     {
         return $this->players()->wherePivot('type', PlayerType::PEER);
     }

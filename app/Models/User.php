@@ -40,13 +40,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
-    public function getLobbyAttribute()
+    public function lobbies(): BelongsToMany
     {
-        return $this->lobby()->get();
-    }
-
-    public function lobby(): BelongsToMany
-    {
-        return $this->belongsToMany(Lobby::class, 'players')->using(Player::class);
+        return $this->belongsToMany(Lobby::class, 'players')
+            ->using(Player::class)
+            ->withPivot('type')
+            ->latest();
     }
 }

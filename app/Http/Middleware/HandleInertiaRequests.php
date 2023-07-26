@@ -40,7 +40,10 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'user' => new UserResource($request->user()),
-            'lobby' => fn() => new LobbyResource($request->user()?->lobby)
+            'lobby' => fn() => new LobbyResource($request->user()?->lobby),
+            'flash' => [
+                'message' => fn() => $request->session()->get('message'),
+            ],
         ]);
     }
 }
