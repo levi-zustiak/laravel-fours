@@ -1,37 +1,38 @@
 import { router } from 'inertia-solid';
-import { createStore } from 'solid-js/store';
+import { createSignal, onCleanup } from 'solid-js';
+import { useLobby } from '@contexts/LobbyContext';
 
 export default function Join() {
-  const [values, setValues] = createStore({
-    lobby_id: '',
-  });
+  const { wait, unwait } = useLobby();
+  const [lobbyId, setLobbyId] = createSignal<string>('');
 
   const handleChange = ({ currentTarget }) => {
-    const { name, value } = currentTarget;
+    const { value } = currentTarget;
 
-    setValues(name, value);
+    setLobbyId(value);
   };
 
   const submit = (e) => {
     e.preventDefault();
 
-    router.post(`/lobby/join`, values, {
-      onStart: (visit) => console.log('start', visit),
-      onProgress: (progress) => console.log('progress', progress),
-      onSuccess: (page) => console.log('success', page),
-      onFinish: (visit) => console.log('finished', visit),
-    });
+    if (lobbyId()) {
+      wait(lobbyId());
+
+      router.post(`/lobby/join/${lobbyId()}`);
+    }
   };
+
+  onCleanup(() => {
+    if (lobbyId()) {
+      unwait(lobbyId());
+    }
+  });
 
   return (
     <div>
       <h1>Join</h1>
       <form onSubmit={submit}>
-        <input
-          name="lobby_id"
-          value={values.lobby_id}
-          onChange={handleChange}
-        />
+        <input name="lobby_id" value={lobbyId()} onChange={handleChange} />
         <button type="submit">Submit</button>
       </form>
     </div>

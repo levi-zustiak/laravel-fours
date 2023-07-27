@@ -28,7 +28,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/lobby/create', [LobbyController::class, 'create']);
     Route::get('/lobby/join', [LobbyController::class, 'join']);
-    Route::post('/lobby/join', [LobbyController::class, 'connect']);
+    Route::post('/lobby/join/{lobby}', [LobbyController::class, 'connect']);
 
     Route::patch('/lobby/{lobby}', [LobbyController::class, 'update']);
     Route::delete('/lobby/delete/{lobby}', [LobbyController::class, 'destroy']);

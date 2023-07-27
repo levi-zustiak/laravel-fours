@@ -19,6 +19,8 @@ class Game extends Model
     ];
 
     protected $fillable = [
+        'player_one',
+        'player_two',
         'current_player',
         'in_progress',
         'board',

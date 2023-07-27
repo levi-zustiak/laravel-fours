@@ -3,17 +3,20 @@
 namespace App\Models;
 
 use App\Enums\LobbyStatus;
-use App\Enums\PlayerType;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Lobby extends Model
 {
     use HasFactory, HasUuids;
+
+    protected $with = [
+        'host',
+        'peer',
+    ];
 
     protected $fillable = [
         'status',
@@ -23,18 +26,14 @@ class Lobby extends Model
         'status' => LobbyStatus::class,
     ];
 
-    public function hosts(): BelongsToMany
+    public function host(): BelongsTo
     {
-        return $this->players()->wherePivot('type', PlayerType::HOST);
-
-    public function peer()
-    {
-        return $this->peers()->first();
+        return $this->belongsTo(User::class, 'host_id');
     }
 
-    public function peers(): BelongsToMany
+    public function peer(): BelongsTo
     {
-        return $this->players()->wherePivot('type', PlayerType::PEER);
+        return $this->belongsTo(User::class, 'peer_id');
     }
 
     public function game(): HasOne

@@ -21,8 +21,6 @@ class JoinLobbyRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'lobby_id' => 'string|exists:lobbies,id'
-        ];
+        return [];
     }
 }

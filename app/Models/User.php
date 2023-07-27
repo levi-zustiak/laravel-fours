@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -40,11 +40,20 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
-    public function lobbies(): BelongsToMany
+    public function host(): HasOne
     {
-        return $this->belongsToMany(Lobby::class, 'players')
-            ->using(Player::class)
-            ->withPivot('type')
-            ->latest();
+        return $this->hasOne(Lobby::class, 'host_id');
+    }
+
+    public function peer(): HasOne
+    {
+        return $this->hasOne(Lobby::class, 'peer_id');
+    }
+
+    public function hasLobby(): bool
+    {
+        return Lobby::where('host_id', $this->id)
+            ->orWhere('peer_id', $this->id)
+            ->exists();
     }
 }

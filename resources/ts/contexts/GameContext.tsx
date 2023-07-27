@@ -34,11 +34,12 @@ type GameContext = {
 const GameContext = createContext<GameContext | undefined>(undefined);
 
 const GameContextProvider = (props: Props) => {
+  // const { props: pageProps } = usePage();
   const [state, setState] = createStore<GameState>(props.initialState);
 
   const update = (col: number) => {
     try {
-      router.post('/game/update', {
+      router.post(`/game/${game.id}update`, {
         id: state.id,
         col,
       });

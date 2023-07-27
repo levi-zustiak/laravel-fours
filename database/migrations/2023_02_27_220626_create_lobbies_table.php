@@ -12,6 +12,11 @@ return new class extends Migration {
     {
         Schema::create('lobbies', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('host_id')
+                ->constrained('users');
+            $table->foreignId('peer_id')
+                ->nullable()
+                ->constrained('users');
             $table->string('status');
             $table->timestamps();
         });

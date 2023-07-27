@@ -11,7 +11,6 @@ class GameController extends Controller
 {
     public function index(Game $game): Response
     {
-        dd($game);
         return Inertia::render('Game/Index', [
             'game' => new GameResource($game),
         ]);
