@@ -1,4 +1,4 @@
-import { createContext, For, onMount } from 'solid-js';
+import { For, onMount } from 'solid-js';
 import { Column } from './Column';
 import { Stage } from '@pixi/components/Stage';
 import { Texture } from 'pixi.js';
@@ -7,10 +7,9 @@ import { P } from '@pixi/renderer';
 import gsap from 'gsap';
 import { useGame } from '@contexts/GameContext';
 
-export const GameContext = createContext();
-
 export function Board() {
   let board;
+
   const { state } = useGame();
 
   onMount(() => {

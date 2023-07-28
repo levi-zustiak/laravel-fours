@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/lobby/delete/{lobby}', [LobbyController::class, 'destroy']);
 
     Route::get('/game/{game}', [GameController::class, 'index'])->name('game.index');
+    Route::post('/game/{game}/update', [GameController::class, 'update']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });

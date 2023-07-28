@@ -1,5 +1,5 @@
-import { User } from "@/types/user.types";
-import { Link } from "inertia-solid";
+import { User } from '@/types/user.types';
+import { Link } from 'inertia-solid';
 
 type Props = {
   user: User;

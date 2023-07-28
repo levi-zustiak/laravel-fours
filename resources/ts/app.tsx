@@ -9,7 +9,7 @@ import '../css/app.css';
 import { LobbyProvider } from '@contexts/LobbyContext';
 
 createInertiaApp({
-  resolveComponent: async (name: string) => {
+  resolve: async (name: string) => {
     const pages = import.meta.glob<InertiaComponent>('./Pages/**/*.tsx', {
       import: 'default',
       eager: true,
