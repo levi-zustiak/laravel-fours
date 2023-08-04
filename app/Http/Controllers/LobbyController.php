@@ -21,6 +21,7 @@ class LobbyController extends Controller
 
     public function connect(JoinLobbyRequest $request, Lobby $lobby)
     {
+        return back()->with('message', 'Test message');
         $lobby->peer()->associate($request->user())->save();
 
         Connected::dispatch($lobby);

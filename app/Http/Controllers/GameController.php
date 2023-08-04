@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\GameUpdate;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Illuminate\Http\Request;
@@ -20,23 +19,7 @@ class GameController extends Controller
 
     public function update(Request $request, Game $game)
     {
-        $board = $game->board;
-        $col = $request->input('col');
-        $row = array_search(null, $game->board[$col]);
-
-        $board[$col][$row] = [
-            'id' => 1,
-            'player' => $request->user(),
-            'position' => [
-                'col' => $col,
-                'row' => $row,
-            ],
-        ];
-
-        $game->update([
-            'board' => $board,
-        ]);
-
-        GameUpdate::dispatch($game);
+        $game->handleMove($request->user(), $request->input('col'));
     }
 }
+

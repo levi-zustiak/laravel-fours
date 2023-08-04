@@ -8,6 +8,12 @@ import {
 import { createStore, reconcile } from 'solid-js/store';
 import { router, usePage } from 'inertia-solid';
 import { Echo } from '../bootstrap';
+import { Texture } from 'pixi.js';
+import board from '../assets/board.png';
+import column from '../assets/column.png';
+import redToken from '../assets/red_token.png';
+import yellowToken from '../assets/yellow_token.png';
+import { Game } from '@types/game.types';
 
 type Token = {
   col: number;
@@ -35,40 +41,49 @@ type Props = {
 type GameContext = {
   state: GameState;
   update: (col: number) => void;
+  textures: {
+    board: Texture;
+    column: Texture;
+    redToken: Texture;
+    yellowToken: Texture;
+  };
 };
 
 const GameContext = createContext<GameContext | undefined>(undefined);
 
 const GameContextProvider = (props: Props) => {
   const [state, setState] = createStore<GameState>(props.initialState);
-  const game = () => usePage().props.game;
+  const { game } = usePage().props;
 
   createEffect(() => console.log('game', game()));
 
-  console.log(game());
-
   const update = (col: number) => {
-    try {
-      router.post(`/game/${game().id}/update`, {
-        id: state.id,
-        col,
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    router.post(`/game/${game.id}/update`, {
+      col,
+    });
   };
 
   onMount(() => {
-    Echo.private(`game.${game().id}`).listen('GameUpdate', ({ game }) => {
-      console.log('update', game);
-      setState(reconcile(game));
-    });
+    Echo.private(`game.${game().id}`).listen(
+      'GameUpdate',
+      ({ game }: { game: Game }) => {
+        console.log('update', game);
+        setState(reconcile(game));
+      },
+    );
 
     onCleanup(() => Echo.leaveChannel(`orders.${state.id}`));
   });
 
+  const textures = {
+    board: Texture.from(board),
+    column: Texture.from(column),
+    redToken: Texture.from(redToken),
+    yellowToken: Texture.from(yellowToken),
+  };
+
   return (
-    <GameContext.Provider value={{ state, update }}>
+    <GameContext.Provider value={{ state, update, textures }}>
       {props.children}
     </GameContext.Provider>
   );

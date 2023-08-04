@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\GameUpdate;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Database\Eloquent\BroadcastsEvents;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -64,5 +65,29 @@ class Game extends Model
             'updated' => 'game:update',
             default => null,
         };
+    }
+
+    public function handleMove(User $user, int $col)
+    {
+        $board = $this->board;
+//        $board = array_fill(0, 7, array_fill(0, 6, null));
+        $row = array_search(null, $this->board[$col]);
+
+        $board[$col][$row] = [
+            'id' => 1,
+            'player' => $user,
+            'played_by' => $this->current_player,
+            'position' => [
+                'col' => $col,
+                'row' => $row,
+            ],
+        ];
+
+        $this->update([
+            'board' => $board,
+            'current_player' => !$this->current_player
+        ]);
+
+        GameUpdate::dispatch($this);
     }
 }

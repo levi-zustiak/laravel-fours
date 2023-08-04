@@ -2,9 +2,10 @@ import { router } from 'inertia-solid';
 import { createSignal, onCleanup } from 'solid-js';
 import { useLobby } from '@contexts/LobbyContext';
 
-export default function Join() {
+export default function Join({ flash }: any) {
   const { wait, unwait } = useLobby();
   const [lobbyId, setLobbyId] = createSignal<string>('');
+  console.log(flash);
 
   const handleChange = ({ currentTarget }) => {
     const { value } = currentTarget;
