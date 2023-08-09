@@ -1,0 +1,19 @@
+.primary {
+    color: #222;
+}
+
+.secondary {
+    color: #fff;
+}
+
+.small {
+    transform: scale(0.75);
+}
+
+.medium {
+    transform: scale(1);
+}
+
+.large {
+    transform: scale(1.5);
+}

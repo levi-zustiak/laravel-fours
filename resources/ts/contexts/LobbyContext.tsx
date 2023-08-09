@@ -1,4 +1,10 @@
-import { createContext, JSX, ParentProps, useContext } from 'solid-js';
+import {
+  createContext,
+  JSX,
+  onCleanup,
+  ParentProps,
+  useContext,
+} from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { Echo } from '../bootstrap.js';
 import { router } from 'inertia-solid';
@@ -40,12 +46,16 @@ const LobbyProvider = (props: ParentProps): JSX.Element => {
     Echo.private(`lobby.${lobbyId}`).listen(
       'StartGame',
       ({ lobby, game }: LobbyStartEvent) => {
+        setState(lobby);
+
         if (lobby) {
           router.get(`/game/${game.id}`);
         }
       },
     );
   };
+
+  onCleanup(() => Echo.private(`lobby.${state.id}`));
 
   const unwait = (lobbyId: string) => {
     Echo.private(`lobby.${lobbyId}`).stopListening('lobby:start');

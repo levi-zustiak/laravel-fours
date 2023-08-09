@@ -19,7 +19,7 @@ export default function Join({ flash }: any) {
     if (lobbyId()) {
       wait(lobbyId());
 
-      router.post(`/lobby/join/${lobbyId()}`);
+      router.post(`/join/${lobbyId()}`);
     }
   };
 

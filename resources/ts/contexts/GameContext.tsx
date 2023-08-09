@@ -1,10 +1,4 @@
-import {
-  createContext,
-  createEffect,
-  onCleanup,
-  onMount,
-  useContext,
-} from 'solid-js';
+import { createContext, onCleanup, onMount, useContext } from 'solid-js';
 import { createStore, reconcile } from 'solid-js/store';
 import { router, usePage } from 'inertia-solid';
 import { Echo } from '../bootstrap';
@@ -55,8 +49,6 @@ const GameContextProvider = (props: Props) => {
   const [state, setState] = createStore<GameState>(props.initialState);
   const { game } = usePage().props;
 
-  createEffect(() => console.log('game', game()));
-
   const update = (col: number) => {
     router.post(`/game/${game.id}/update`, {
       col,
@@ -64,12 +56,9 @@ const GameContextProvider = (props: Props) => {
   };
 
   onMount(() => {
-    Echo.private(`game.${game().id}`).listen(
+    Echo.private(`game.${game.id}`).listen(
       'GameUpdate',
-      ({ game }: { game: Game }) => {
-        console.log('update', game);
-        setState(reconcile(game));
-      },
+      ({ game }: { game: Game }) => setState(reconcile(game)),
     );
 
     onCleanup(() => Echo.leaveChannel(`orders.${state.id}`));

@@ -90,4 +90,50 @@ class Game extends Model
 
         GameUpdate::dispatch($this);
     }
+
+    private function updateBoard($token)
+    {
+
+    }
+
+    private function updateMoveList()
+    {
+
+    }
+
+    private function checkVertical()
+    {
+
+    }
+
+    private function checkHorizontal()
+    {
+
+    }
+
+    private function checkRightDiagonal()
+    {
+
+    }
+
+    private function checkLeftDiagonal()
+    {
+
+    }
+
+    private function checkDraw()
+    {
+    }
+
+    private function checkArray()
+    {
+    }
+
+    private function min(int $num)
+    {
+    }
+
+    private function max(int $num, int $max)
+    {
+    }
 }

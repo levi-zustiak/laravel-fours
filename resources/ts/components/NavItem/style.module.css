@@ -1,0 +1,28 @@
+.link {
+    background-color: var(--background-main);
+    height: 48px;
+    width: 48px;
+    padding: 4px;
+    display: grid;
+    place-items: center;
+    transition: all 150ms ease-in-out;
+}
+
+.link:hover,
+.link:active,
+.link:focus-visible {
+    position: relative;
+    border: 2px solid var(--primary-main);
+    transform: translate(3px, -3px);
+    filter: drop-shadow(-3px 3px 0 var(--primary-main));
+}
+
+.primary {
+    color: var(--secondary-main);
+    background-color: var(--primary-main);
+}
+
+.secondary {
+    color: var(--primary-main);
+    background-color: var(--secondary-main);
+}

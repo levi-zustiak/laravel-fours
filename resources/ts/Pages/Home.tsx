@@ -12,8 +12,8 @@ export default function Home({ user }: Props) {
       <Link href="/logout">Logout</Link>
       <Link href="/login">Login</Link>
       <Link href="/register">Register</Link>
-      <Link href="/lobby/create">Create</Link>
-      <Link href="/lobby/join">Join</Link>
+      <Link href="/create">Create</Link>
+      <Link href="/join">Join</Link>
       <pre>{JSON.stringify(user, null, 4)}</pre>
     </div>
   );
