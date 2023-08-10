@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\LobbyController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/game/{game}', [GameController::class, 'index'])->name('game.index');
     Route::post('/game/{game}/update', [GameController::class, 'update']);
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });

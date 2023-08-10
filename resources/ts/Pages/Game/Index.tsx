@@ -19,7 +19,7 @@ export default function Index(props: Props) {
   });
   return (
     <GameContextProvider initialState={props.game}>
-      <Board game={props.game} />
+      <Board />
     </GameContextProvider>
   );
 }

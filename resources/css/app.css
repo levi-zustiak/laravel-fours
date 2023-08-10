@@ -8,26 +8,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Courier New", Courier;
 }
 
 body {
     background-color: #FFFBF2;
     color: #222222;
 }
-
-/*nav {*/
-/*    height: 120px;*/
-/*    width: 100vw;*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    border: 1px solid red;*/
-/*}*/
-
-/*.nav-items {*/
-/*    display: flex;*/
-/*    gap: 1rem;*/
-/*}*/
 
 .nav-item {
     background-color: rgba(255, 212, 128, 1);

@@ -1,0 +1,12 @@
+.container {
+    border: 1px solid blue;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    align-self: center;
+    width: 100%;
+    max-width: 960px;
+}

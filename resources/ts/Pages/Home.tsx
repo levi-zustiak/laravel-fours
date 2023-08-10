@@ -1,5 +1,7 @@
-import { User } from '@/types/user.types';
-import { Link } from 'inertia-solid';
+import { User } from '@types/user.types';
+import { Card } from '@components/Card';
+import { Icon } from '@components/Icon';
+import { router } from 'inertia-solid';
 
 type Props = {
   user: User;
@@ -8,13 +10,21 @@ type Props = {
 export default function Home({ user }: Props) {
   return (
     <div>
-      <h1>Home</h1>
-      <Link href="/logout">Logout</Link>
-      <Link href="/login">Login</Link>
-      <Link href="/register">Register</Link>
-      <Link href="/create">Create</Link>
-      <Link href="/join">Join</Link>
-      <pre>{JSON.stringify(user, null, 4)}</pre>
+      <h1>Welcome back, {user.name}!</h1>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Card
+          title="Create"
+          message="Play a game with a friend"
+          onClick={() => router.get('/create')}
+          slots={{ icon: <Icon name="PlusSquare" /> }}
+        />
+        <Card
+          title="Join"
+          message="Join a existing game"
+          onClick={() => router.get('/join')}
+          slots={{ icon: <Icon name="UserPlus" /> }}
+        />
+      </div>
     </div>
   );
 }

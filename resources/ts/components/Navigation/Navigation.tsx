@@ -13,7 +13,7 @@ export function Navigation(props: any) {
         <NavItem href="/create">
           <IconButton iconProps={{ name: 'Bell' }} />
         </NavItem>
-        <NavItem href="#">
+        <NavItem href="/profile">
           <IconButton iconProps={{ name: 'User' }} />
         </NavItem>
       </div>

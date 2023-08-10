@@ -1,6 +1,8 @@
 import { router } from 'inertia-solid';
 import { createSignal, onCleanup } from 'solid-js';
 import { useLobby } from '@contexts/LobbyContext';
+import { Input } from '@components/Input';
+import { Button } from '@components/Button';
 
 export default function Join({ flash }: any) {
   const { wait, unwait } = useLobby();
@@ -33,8 +35,8 @@ export default function Join({ flash }: any) {
     <div>
       <h1>Join</h1>
       <form onSubmit={submit}>
-        <input name="lobby_id" value={lobbyId()} onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <Input name="lobby_id" value={lobbyId()} onChange={handleChange} />
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );

@@ -2,6 +2,8 @@ import { Lobby } from '@/types/lobby.types';
 import { Link } from 'inertia-solid';
 import { onCleanup, onMount } from 'solid-js';
 import { useLobby } from '@contexts/LobbyContext';
+import { Card } from '@components/Card';
+import { Icon } from '@components/Icon';
 
 type Props = {
   lobby: Lobby;
@@ -24,6 +26,20 @@ export default function Create({ lobby }: Props) {
     <div>
       <h1>Create</h1>
       <pre>{JSON.stringify(lobby, null, 4)}</pre>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Card
+          title="Invite"
+          message="Invite another player"
+          onClick={() => alert('invite')}
+          slots={{ icon: <Icon name="Send" /> }}
+        />
+        <Card
+          title="Copy"
+          message="Copy invite to share"
+          onClick={copyLink}
+          slots={{ icon: <Icon name="Copy" /> }}
+        />
+      </div>
       <Link
         href={`/lobby/delete/${lobby.id}`}
         method="delete"
@@ -32,7 +48,6 @@ export default function Create({ lobby }: Props) {
       >
         Cancel
       </Link>
-      <button onClick={copyLink}>Copy Invite</button>
     </div>
   );
 }

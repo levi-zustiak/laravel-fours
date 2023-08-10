@@ -26,7 +26,6 @@ export function Icon(props: IconProps) {
     <Dynamic
       component={icons[local.name]}
       class={styles[merged.color]}
-      size={32}
       {...rest}
     />
   );
