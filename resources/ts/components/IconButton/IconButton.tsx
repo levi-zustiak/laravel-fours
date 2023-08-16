@@ -6,7 +6,6 @@ type Props = {
 };
 
 export function IconButton(props: Props) {
-  console.log(props.iconProps);
   return (
     <div class={styles.container}>
       <Icon {...props.iconProps} />

@@ -1,12 +1,22 @@
 .container {
-    border: 1px solid blue;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-areas: "nav main";
+    gap: 2rem;
+}
+
+.main {
+    /*align-self: center;*/
+    grid-area: main;
     display: flex;
     flex-direction: column;
 }
 
-.main {
-    align-self: center;
+.content {
+    margin-top: 250px;
+    max-width: 1920px;
     width: 100%;
-    max-width: 960px;
+    align-self: center;
 }

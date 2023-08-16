@@ -6,7 +6,9 @@ export function DefaultLayout(props: { children: JSXElement }) {
   return (
     <div class={styles.container}>
       <Navigation />
-      <main class={styles.main}>{props.children}</main>
+      <main class={styles.main}>
+        <div class={styles.content}>{props.children}</div>
+      </main>
     </div>
   );
 }

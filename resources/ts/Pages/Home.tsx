@@ -1,16 +1,11 @@
-import { User } from '@types/user.types';
 import { Card } from '@components/Card';
 import { Icon } from '@components/Icon';
 import { router } from 'inertia-solid';
 
-type Props = {
-  user: User;
-};
-
-export default function Home({ user }: Props) {
+export default function Home() {
   return (
     <div>
-      <h1>Welcome back, {user.name}!</h1>
+      <h1>Home</h1>
       <div style={{ display: 'flex', gap: '1rem' }}>
         <Card
           title="Create"

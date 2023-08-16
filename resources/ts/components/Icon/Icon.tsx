@@ -1,5 +1,4 @@
 import { icons } from 'lucide-solid';
-import { mergeProps, splitProps } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import styles from './style.module.css';
 
@@ -14,19 +13,11 @@ export type IconProps = {
 };
 
 export function Icon(props: IconProps) {
-  const [local, rest] = splitProps(props, ['name']);
-  const merged = mergeProps(
-    {
-      color: 'primary',
-    },
-    rest,
-  );
-
   return (
     <Dynamic
-      component={icons[local.name]}
-      class={styles[merged.color]}
-      {...rest}
+      component={icons[props.name]}
+      class={styles[props.color]}
+      {...props}
     />
   );
 }

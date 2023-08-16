@@ -25,7 +25,6 @@ export default function Create({ lobby }: Props) {
   return (
     <div>
       <h1>Create</h1>
-      <pre>{JSON.stringify(lobby, null, 4)}</pre>
       <div style={{ display: 'flex', gap: '1rem' }}>
         <Card
           title="Invite"
