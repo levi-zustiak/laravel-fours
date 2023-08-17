@@ -4,6 +4,7 @@ import { onCleanup, onMount } from 'solid-js';
 import { useLobby } from '@contexts/LobbyContext';
 import { Card } from '@components/Card';
 import { Icon } from '@components/Icon';
+import { PageAnimation } from '@components/PageAnimation';
 
 type Props = {
   lobby: Lobby;
@@ -23,7 +24,7 @@ export default function Create({ lobby }: Props) {
   onCleanup(() => unwait(lobby.id));
 
   return (
-    <div>
+    <PageAnimation>
       <h1>Create</h1>
       <div style={{ display: 'flex', gap: '1rem' }}>
         <Card
@@ -47,6 +48,6 @@ export default function Create({ lobby }: Props) {
       >
         Cancel
       </Link>
-    </div>
+    </PageAnimation>
   );
 }

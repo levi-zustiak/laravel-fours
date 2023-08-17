@@ -16,8 +16,6 @@ createInertiaApp({
       eager: true,
     });
 
-    console.log(pages);
-
     const page = pages[`./Pages/${name}.tsx`];
 
     page.layout = (props) => <DefaultLayout>{props.children}</DefaultLayout>;
