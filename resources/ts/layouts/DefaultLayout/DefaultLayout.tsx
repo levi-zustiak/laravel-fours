@@ -1,16 +1,16 @@
 import { JSXElement } from 'solid-js';
-import { Navigation } from '@components/Navigation';
 import styles from './style.module.css';
 import { Notifications } from '@components/Notifications/Notifications';
 import { Profile } from '@components/Profile';
-import { Presence } from '@motionone/solid';
 import { router } from 'inertia-solid';
+import { SideNavigation } from '@components/SideNavigation';
 
 export function DefaultLayout(props: { children: JSXElement }) {
   router.on('before', (event) => console.log(event));
+
   return (
     <div class={styles.container}>
-      <Navigation />
+      <SideNavigation />
       <div
         style={{
           position: 'fixed',
@@ -24,9 +24,7 @@ export function DefaultLayout(props: { children: JSXElement }) {
         <Profile />
       </div>
       <main class={styles.main}>
-        <Presence exitBeforeEnter>
-          <div class={styles.content}>{props.children}</div>
-        </Presence>
+        <div class={styles.content}>{props.children}</div>
       </main>
     </div>
   );

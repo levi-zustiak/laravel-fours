@@ -4,7 +4,7 @@ import styles from './style.module.css';
 
 export function NavItem(props: { href: string; children: JSXElement }) {
   return (
-    <Link href={props.href} class={styles.link}>
+    <Link href={props.href} class={styles.link} preserveState>
       {props.children}
     </Link>
   );

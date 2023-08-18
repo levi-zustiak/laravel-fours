@@ -1,9 +1,9 @@
 .primary {
-    color: var(--primary-main);
+    color: var(--secondary-main);
 }
 
 .secondary {
-    color: var(--secondary-main);
+    color: var(--primary-main);
 }
 
 .small {

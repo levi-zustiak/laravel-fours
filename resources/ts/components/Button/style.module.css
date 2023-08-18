@@ -1,8 +1,8 @@
 .button {
-    border: 2px solid var(--primary-main);
+    border: 2px solid var(--secondary-main);
     padding: 8px;
-    color: var(--secondary-main);
-    background-color: var(--primary-main);
+    color: var(--primary-main);
+    background-color: var(--secondary-main);
 }
 
 .text {
