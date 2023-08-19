@@ -1,0 +1,11 @@
+.container {
+    position: absolute;
+}
+
+.wipe {
+    z-index: 50;
+    position: fixed;
+    width: 100vw;
+    background-color: var(--secondary-main);
+}
+

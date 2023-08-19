@@ -5,9 +5,4 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    border: 1px solid red;
-}
-
-.link:hover {
-    background-color: red;
 }

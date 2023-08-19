@@ -7,7 +7,7 @@ import { render } from 'solid-js/web';
 import './bootstrap';
 import '../css/app.css';
 import { LobbyProvider } from '@contexts/LobbyContext';
-import { DefaultLayout } from '@layouts/DefaultLayout/DefaultLayout';
+import { DefaultLayout } from '@layouts/DefaultLayout';
 
 createInertiaApp({
   resolve: async (name: string) => {
@@ -18,7 +18,7 @@ createInertiaApp({
 
     const page = pages[`./Pages/${name}.tsx`];
 
-    page.layout = (props) => <DefaultLayout>{props.children}</DefaultLayout>;
+    page.layout = [DefaultLayout];
 
     return page;
   },

@@ -2,14 +2,13 @@ import { JSXElement } from 'solid-js';
 import styles from './style.module.css';
 import { Notifications } from '@components/Notifications/Notifications';
 import { Profile } from '@components/Profile';
-import { router } from 'inertia-solid';
 import { SideNavigation } from '@components/SideNavigation';
+import { InitialTransition } from '@components/InitialTransition';
 
 export function DefaultLayout(props: { children: JSXElement }) {
-  router.on('before', (event) => console.log(event));
-
   return (
     <div class={styles.container}>
+      <InitialTransition />
       <SideNavigation />
       <div
         style={{
