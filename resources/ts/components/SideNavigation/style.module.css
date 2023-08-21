@@ -13,7 +13,7 @@
     padding: 4px;
     transition: all 250ms ease-in-out;
     position: absolute;
-    top: 48px;
+    top: 128px;
     right: 0;
     transform: translateX(50%);
     background-color: var(--primary-main);

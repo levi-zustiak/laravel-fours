@@ -28,16 +28,16 @@ export default function Create({ lobby }: Props) {
       <h1>Create</h1>
       <div style={{ display: 'flex', gap: '1rem' }}>
         <Card
-          title="Invite"
-          message="Invite another player"
-          onClick={() => alert('invite')}
-          slots={{ icon: <Icon name="Send" /> }}
-        />
-        <Card
           title="Copy"
           message="Copy invite to share"
           onClick={copyLink}
           slots={{ icon: <Icon name="Copy" /> }}
+        />
+        <Card
+          title="Invite"
+          message="Invite another player"
+          onClick={() => alert('invite')}
+          slots={{ icon: <Icon name="Send" /> }}
         />
       </div>
       <Link

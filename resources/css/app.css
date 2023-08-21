@@ -9,34 +9,47 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Courier New", Courier;
 }
 
 body {
     background-color: #FFFBF2;
     color: #222222;
+    font-family: 'Poppins';
 }
 
-.nav-item {
-    background-color: rgba(255, 212, 128, 1);
-    border: 2px solid #222;
-    height: 36px;
-    width: 36px;
-    display: grid;
-    place-items: center;
-    transition: all 150ms ease-in-out;
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
 }
 
-.nav-item:hover {
-    background-color: rgba(255, 212, 128, 1);
-    transform: translate(3px, -3px);
-    filter: drop-shadow(-3px 3px 0 black);
-    outline: 0;
+h2 {
+    font-size: 3rem;
 }
 
-.nav-item:active {
-    transform: none;
-    filter: none;
+h3 {
+    font-size: 2.5rem;
 }
+
+/*.nav-item {*/
+/*    background-color: rgba(255, 212, 128, 1);*/
+/*    border: 2px solid #222;*/
+/*    height: 36px;*/
+/*    width: 36px;*/
+/*    display: grid;*/
+/*    place-items: center;*/
+/*    transition: all 150ms ease-in-out;*/
+/*}*/
+
+/*.nav-item:hover {*/
+/*    background-color: rgba(255, 212, 128, 1);*/
+/*    transform: translate(3px, -3px);*/
+/*    filter: drop-shadow(-3px 3px 0 black);*/
+/*    outline: 0;*/
+/*}*/
+
+/*.nav-item:active {*/
+/*    transform: none;*/
+/*    filter: none;*/
+/*}*/
 
 

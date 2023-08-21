@@ -71,9 +71,9 @@ export function Logo(props: { show: boolean }) {
       </div>
       <Presence>
         <Show when={props.show}>
-          <Motion.h1 class={styles.text} {...textAnimations}>
+          <Motion.h3 class={styles.text} {...textAnimations}>
             FOURS
-          </Motion.h1>
+          </Motion.h3>
         </Show>
       </Presence>
     </div>

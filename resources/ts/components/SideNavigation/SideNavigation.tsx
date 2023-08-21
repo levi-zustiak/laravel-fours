@@ -1,9 +1,8 @@
-import { Motion, Presence } from '@motionone/solid';
+import { Motion } from '@motionone/solid';
 import { ChevronsRight } from 'lucide-solid';
-import { createSignal, Show } from 'solid-js';
+import { createSignal } from 'solid-js';
 import styles from './style.module.css';
 import { NavItem } from '@components/NavItem';
-import { IconButton } from '@components/IconButton';
 import { Logo } from '@components/Logo';
 
 const initialIcon = {
@@ -22,28 +21,6 @@ const initial = {
 
 const animate = {
   width: '224px',
-};
-
-const textAnimations = {
-  initial: {
-    opacity: 0,
-    x: -10,
-  },
-  animate: {
-    opacity: 1,
-    x: 0,
-  },
-  exit: {
-    opacity: 0,
-    x: -10,
-    transition: {
-      delay: 0,
-    },
-  },
-  transition: {
-    easing,
-    delay: 0.1,
-  },
 };
 
 export function SideNavigation() {
@@ -68,30 +45,14 @@ export function SideNavigation() {
       </div>
       <Logo show={open()} />
       <div class={styles.linkContainer}>
-        <NavItem href="/">
-          <IconButton iconProps={{ name: 'Home' }} />
-          <Presence exitBeforeEnter>
-            <Show when={open()}>
-              <Motion.h3 {...textAnimations}>Home</Motion.h3>
-            </Show>
-          </Presence>
-        </NavItem>
-        <NavItem href="/create">
-          <IconButton iconProps={{ name: 'Bell' }} />
-          <Presence exitBeforeEnter>
-            <Show when={open()}>
-              <Motion.h3 {...textAnimations}>Create</Motion.h3>
-            </Show>
-          </Presence>
-        </NavItem>
-        <NavItem href="/profile">
-          <IconButton iconProps={{ name: 'User' }} />
-          <Presence exitBeforeEnter>
-            <Show when={open()}>
-              <Motion.h3 {...textAnimations}>Join</Motion.h3>
-            </Show>
-          </Presence>
-        </NavItem>
+        <NavItem href="/" icon="Home" show={open()} label="Home" />
+        <NavItem
+          href="/create"
+          icon="PlusCircle"
+          show={open()}
+          label="Create"
+        />
+        <NavItem href="/join" icon="Cable" show={open()} label="Join" />
       </div>
     </Motion.div>
   );

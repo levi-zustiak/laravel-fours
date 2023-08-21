@@ -5,7 +5,16 @@
 .wipe {
     z-index: 50;
     position: fixed;
-    width: 100vw;
+    height: 100vh;
     background-color: var(--secondary-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.text {
+    color: var(--primary-main);
+    font-size: 10rem;
+    font-weight: bold;
+    font-family: "IBM Plex Mono";
+}

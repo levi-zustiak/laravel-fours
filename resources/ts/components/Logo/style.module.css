@@ -11,4 +11,5 @@
 
 .text {
     color: var(--primary-main);
+    font-size: 1.75rem;
 }

@@ -16,7 +16,7 @@ export function Card(props: Props) {
       <Show when={props?.slots?.icon}>
         <div class={styles.iconContainer}>{props.slots.icon}</div>
       </Show>
-      <h1 class={styles.title}>{props.title}</h1>
+      <h3 class={styles.title}>{props.title}</h3>
       <p class={styles.message}>{props.message}</p>
     </div>
   );
