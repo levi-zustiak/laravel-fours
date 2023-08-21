@@ -13,6 +13,7 @@
 .container:hover {
     filter: drop-shadow(-4px 4px 0 #222);
     transform: translate(4px, -4px);
+    cursor: pointer;
 }
 
 .container:active {

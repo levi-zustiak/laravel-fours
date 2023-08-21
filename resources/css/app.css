@@ -30,6 +30,15 @@ h3 {
     font-size: 2.5rem;
 }
 
+a {
+    color: var(--secondary-main);
+}
+
+a:visited {
+    color: var(--secondary-main);
+    text-decoration: none;
+}
+
 /*.nav-item {*/
 /*    background-color: rgba(255, 212, 128, 1);*/
 /*    border: 2px solid #222;*/

@@ -1,6 +1,6 @@
 import { Card } from '@components/Card';
 import { Icon } from '@components/Icon';
-import { router } from 'inertia-solid';
+import { Link, router } from 'inertia-solid';
 import { PageAnimation } from '@components/PageAnimation';
 import { Motion } from '@motionone/solid';
 
@@ -27,18 +27,18 @@ export default function Home() {
           easing: [0.6, -0.05, 0.01, 0.99],
         }}
       >
-        <Card
-          title="Create"
-          message="Play a game with a friend"
-          onClick={() => router.get('/create')}
-          slots={{ icon: <Icon name="PlusSquare" /> }}
-        />
-        <Card
-          title="Join"
-          message="Join a existing game"
-          onClick={() => router.get('/join')}
-          slots={{ icon: <Icon name="UserPlus" /> }}
-        />
+          <Card
+              title="Create"
+              message="Play a game with a friend"
+              onClick={() => router.get('/create')}
+              slots={{ icon: <Icon name="PlusSquare" /> }}
+          />
+          <Card
+              title="Join"
+              message="Join a existing game"
+              onClick={() => router.get('/join')}
+              slots={{ icon: <Icon name="UserPlus" /> }}
+          />
       </Motion.div>
     </PageAnimation>
   );

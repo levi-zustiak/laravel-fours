@@ -52,7 +52,7 @@ export function NavItem(props: Props) {
     >
       <Link href={props.href} class={styles.link} preserveState>
         <div style={{ height: '32px', width: '32px', padding: '4px' }}>
-          <Icon name={props.icon} />
+          <Icon name={props.icon} color="var(--primary-main)"/>
         </div>
         <Presence exitBeforeEnter>
           <Show when={props.show}>
