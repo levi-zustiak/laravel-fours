@@ -1,0 +1,22 @@
+.container {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.label {
+    font-family: "IBM Plex Mono";
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.input {
+    height: 48px;
+    width: 240px;
+    outline: none;
+    border: 1px solid var(--secondary-main);
+    padding: 12px;
+    font-size: 1rem;
+    font-family: "IBM Plex Mono";
+    font-weight: 500;
+    background-color: transparent;
+}

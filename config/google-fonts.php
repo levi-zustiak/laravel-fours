@@ -7,8 +7,8 @@ return [
      * The google-fonts:fetch command will prefetch these fonts.
      */
     'fonts' => [
-        'default' => 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,400;1,700',
-        'code' => 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;0,900;1,400&display=swap',
+        'default' => 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900',
+        'code' => 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap',
     ],
 
     /*
