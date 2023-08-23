@@ -1,4 +1,4 @@
-import { router } from 'inertia-solid';
+import { Link, router } from 'inertia-solid';
 import { createSignal } from 'solid-js';
 import { TextField } from '@components/TextField';
 import { Button } from '@components/Button';
@@ -26,7 +26,7 @@ export function LoginForm() {
 
   return (
     <div class={styles.container}>
-      <h2>Login</h2>
+      <h2>Sign in</h2>
       <form onSubmit={submit} class={styles.form}>
         <TextField
           label="Username"
@@ -42,6 +42,10 @@ export function LoginForm() {
         />
         <Button type="submit">Submit</Button>
       </form>
+      <div style={{ display: 'flex', gap: '4px', 'margin-top': '2rem' }}>
+        <p>Don't have an account?</p>
+        <Link href="/register">Sign up</Link>
+      </div>
     </div>
   );
 }
