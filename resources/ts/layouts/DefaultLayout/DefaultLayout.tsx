@@ -11,20 +11,20 @@ import { SideNavigation } from '@components/SideNavigation';
 import { Motion, Presence } from '@motionone/solid';
 import { timeline } from 'motion';
 
-export const AnimationContext = createContext({});
-
 export function DefaultLayout(props: { children: JSXElement }) {
-  let initialContainer, navigation, account, content;
+  let initialContainer, initialText, navigation, account, content;
 
   const [animated, setAnimated] = createSignal(false);
 
   onMount(() => {
     timeline(
       [
+          [initialText, { fillOpacity: 1 }, { delay: 1, duration: 0.75 }],
+          [initialText, { opacity: 0 }],
         [
           initialContainer,
           { width: 0 },
-          { delay: 1.25, duration: 1.5, easing: [0.87, 0, 0.13, 1] },
+          { duration: 0.75, easing: [0.87, 0, 0.13, 1], at: "<" },
         ],
         [navigation, { transform: 'translateX(0)' }],
         [
@@ -38,50 +38,39 @@ export function DefaultLayout(props: { children: JSXElement }) {
     );
   });
   return (
-    <div class={styles.container}>
-      {/*<InitialTransition />*/}
-      <Motion.div
-        ref={initialContainer}
-        // animate={{ width: 0 }}
-        // transition={{ delay: 1.25, duration: 1.5, easing: [0.87, 0, 0.13, 1] }}
-        class={styles.wipe}
-      >
-        <Presence>
-          <Show when={!animated()}>
-            <Motion.h1
-              animate={{ opacity: [1, 0], x: -96 }}
-              transition={{
-                delay: 0.75,
-                duration: 1,
-                easing: [0.76, 0, 0.24, 1],
-              }}
-              onMotionComplete={() => setAnimated(true)}
-              class={styles.text}
-            >
-              FOURS
-            </Motion.h1>
-          </Show>
-        </Presence>
-      </Motion.div>
-      <SideNavigation ref={navigation} />
-      <div
-        ref={account}
-        style={{
-          position: 'fixed',
-          top: '64px',
-          right: '0',
-          transform: 'translateX(100%)',
-          display: 'flex',
-          gap: '2rem',
-        }}
-      >
-        <Profile />
-      </div>
-      <main class={styles.main}>
-        <div ref={content} class={styles.content}>
-          {props.children}
-        </div>
-      </main>
-    </div>
+          <div class={styles.container}>
+              <Motion.div
+                  ref={initialContainer}
+                  class={styles.wipe}
+              >
+
+                  <Presence>
+                      <Show when={!animated()}>
+                          <svg ref={initialText} class={styles.text}>
+                              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">FOURS</text>
+                          </svg>
+                      </Show>
+                  </Presence>
+              </Motion.div>
+              <SideNavigation ref={navigation} />
+              <div
+                  ref={account}
+                  style={{
+                      position: 'fixed',
+                      top: '64px',
+                      right: '0',
+                      transform: 'translateX(100%)',
+                      display: 'flex',
+                      gap: '2rem',
+                  }}
+              >
+                  <Profile />
+              </div>
+              <main class={styles.main}>
+                  <div ref={content} class={styles.content}>
+                      {props.children}
+                  </div>
+              </main>
+          </div>
   );
 }

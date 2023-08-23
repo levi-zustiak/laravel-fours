@@ -1,6 +1,7 @@
 .button {
     height: 48px;
     border: 2px solid var(--secondary-main);
+    border-radius: 8px;
     padding: 8px;
     color: var(--primary-main);
     background-color: var(--secondary-main);

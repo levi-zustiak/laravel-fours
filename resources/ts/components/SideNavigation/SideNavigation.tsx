@@ -26,8 +26,6 @@ const animate = {
 export function SideNavigation(props) {
   const [open, setOpen] = createSignal<boolean>(false);
 
-  createEffect(() => console.log('navigation'))
-
   return (
     <Motion.div
         ref={props.ref}

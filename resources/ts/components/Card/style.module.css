@@ -4,10 +4,11 @@
     border: 2px solid var(--secondary-main);
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 300px;
     transition: all 150ms ease-in-out;
     font-family: "IBM Plex Mono", Courier, monospace;
     border-radius: 12px;
+    gap: 0.5rem;
 }
 
 .container:hover {

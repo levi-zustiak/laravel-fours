@@ -15,8 +15,8 @@
 
 .content {
     margin-top: 250px;
-    max-width: 1920px;
-    width: 100%;
+    /*max-width: 1920px;*/
+    /*width: 100%;*/
     align-self: center;
 }
 
@@ -33,8 +33,12 @@
 }
 
 .text {
-    color: var(--primary-main);
-    font-size: 10rem;
-    font-weight: bold;
-    font-family: "IBM Plex Mono";
+    font-size: 96px;
+    font-weight: 900;
+    stroke: var(--primary-main);
+    stroke-width: 2;
+    height: 100px;
+    width: 100%;
+    fill: var(--primary-main);
+    fill-opacity: 0;
 }

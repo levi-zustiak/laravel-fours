@@ -17,6 +17,19 @@ body {
     font-family: 'Poppins';
 }
 
+body::before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPGZpbHRlciBpZD0ibm9pc2UiPgogICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0idHVyYnVsZW5jZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIvPgogICAgPC9maWx0ZXI+CiAgICA8cmVjdCBmaWx0ZXI9InVybCgjbm9pc2UpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiAvPgo8L3N2Zz4=");
+    position: fixed;
+    left: 0;
+    top: 0;
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    opacity: 30%;
+    pointer-events: none;
+}
+
 h1 {
     font-size: 4rem;
     font-weight: 900;

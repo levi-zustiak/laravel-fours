@@ -15,12 +15,12 @@ class AuthController extends Controller
 {
     public function index(): Response | RedirectResponse
     {
-        return Inertia::render('Login');
+        return Inertia::render('Auth/Login');
     }
 
     public function create(): Response
     {
-        return Inertia::render('Register');
+        return Inertia::render('Auth/Register');
     }
 
     public function register(RegisterRequest $request): RedirectResponse
@@ -28,7 +28,7 @@ class AuthController extends Controller
         $user = User::create($request->validated());
 
         Auth::login($user);
-    
+
         $request->session()->regenerate();
 
         return to_route('home');
