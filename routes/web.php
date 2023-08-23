@@ -27,6 +27,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::inertia('/play', 'Play')->name('play');
     Route::get('/create', [LobbyController::class, 'create']);
     Route::get('/join', [LobbyController::class, 'join']);
     Route::post('/join/{lobby}', [LobbyController::class, 'connect']);

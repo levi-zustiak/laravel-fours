@@ -1,6 +1,6 @@
 import { Motion } from '@motionone/solid';
 import { ChevronsRight } from 'lucide-solid';
-import { createSignal } from 'solid-js';
+import {createEffect, createSignal} from 'solid-js';
 import styles from './style.module.css';
 import { NavItem } from '@components/NavItem';
 import { Logo } from '@components/Logo';
@@ -23,12 +23,14 @@ const animate = {
   width: '224px',
 };
 
-export function SideNavigation() {
+export function SideNavigation(props) {
   const [open, setOpen] = createSignal<boolean>(false);
+
+  createEffect(() => console.log('navigation'))
 
   return (
     <Motion.div
-      initial={{ width: open() ? '224px' : '112px' }}
+        ref={props.ref}
       animate={open() ? animate : initial}
       transition={{ duration: 0.5, easing }}
       class={styles.container}
@@ -46,13 +48,7 @@ export function SideNavigation() {
       <Logo show={open()} />
       <div class={styles.linkContainer}>
         <NavItem href="/" icon="Home" show={open()} label="Home" />
-        <NavItem
-          href="/create"
-          icon="PlusCircle"
-          show={open()}
-          label="Create"
-        />
-        <NavItem href="/join" icon="Cable" show={open()} label="Join" />
+          <NavItem href="/play" icon="Joystick" show={open()} label="Play" />
       </div>
     </Motion.div>
   );

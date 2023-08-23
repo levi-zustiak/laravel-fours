@@ -38,27 +38,3 @@ a:visited {
     color: var(--secondary-main);
     text-decoration: none;
 }
-
-/*.nav-item {*/
-/*    background-color: rgba(255, 212, 128, 1);*/
-/*    border: 2px solid #222;*/
-/*    height: 36px;*/
-/*    width: 36px;*/
-/*    display: grid;*/
-/*    place-items: center;*/
-/*    transition: all 150ms ease-in-out;*/
-/*}*/
-
-/*.nav-item:hover {*/
-/*    background-color: rgba(255, 212, 128, 1);*/
-/*    transform: translate(3px, -3px);*/
-/*    filter: drop-shadow(-3px 3px 0 black);*/
-/*    outline: 0;*/
-/*}*/
-
-/*.nav-item:active {*/
-/*    transform: none;*/
-/*    filter: none;*/
-/*}*/
-
-

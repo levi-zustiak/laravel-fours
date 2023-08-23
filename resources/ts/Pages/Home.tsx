@@ -2,13 +2,13 @@ import { Card } from '@components/Card';
 import { Icon } from '@components/Icon';
 import { Link, router } from 'inertia-solid';
 import { PageAnimation } from '@components/PageAnimation';
-import { Motion } from '@motionone/solid';
+import {Motion, Presence} from '@motionone/solid';
 
 export default function Home() {
   return (
     <PageAnimation>
       <Motion.h1
-        initial={{ opacity: 0, y: '20px' }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
           duration: 0.6,
@@ -28,10 +28,10 @@ export default function Home() {
         }}
       >
           <Card
-              title="Create"
+              title="Play"
               message="Play a game with a friend"
-              onClick={() => router.get('/create')}
-              slots={{ icon: <Icon name="PlusSquare" /> }}
+              onClick={() => router.get('/play')}
+              slots={{ icon: <Icon name="Joystick" /> }}
           />
           <Card
               title="Join"

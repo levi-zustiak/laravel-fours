@@ -1,17 +1,15 @@
 import { Motion, Presence } from '@motionone/solid';
 import styles from './style.module.css';
-import { createSignal, Show } from 'solid-js';
+import {createEffect, createRenderEffect, createSignal, Show} from 'solid-js';
 
 export function InitialTransition() {
   const [animated, setAnimated] = createSignal(false);
 
   return (
-    <div class={styles.container}>
       <Motion.div
-        initial={{ width: '100vw', left: 0 }}
         animate={{ width: 0 }}
         transition={{ delay: 1.25, duration: 1.5, easing: [0.87, 0, 0.13, 1] }}
-        class={styles.wipe}
+        class={styles.container}
       >
         <Presence>
           <Show when={!animated()}>
@@ -24,12 +22,12 @@ export function InitialTransition() {
               }}
               onMotionComplete={() => setAnimated(true)}
               class={styles.text}
+              connected={() => console.log('connected')}
             >
               FOURS
             </Motion.h1>
           </Show>
         </Presence>
       </Motion.div>
-    </div>
   );
 }
