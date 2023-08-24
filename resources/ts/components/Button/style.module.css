@@ -8,6 +8,7 @@
     font-family: "Poppins";
     font-weight: 700;
     font-size: 1rem;
+    transition: all 150ms ease-in-out;
 }
 
 .text {
@@ -15,9 +16,19 @@
 }
 
 .outlined {
+    background-color: transparent;
+    color: var(--secondary-main);
+}
 
+.outlined:hover {
+    background-color: var(--secondary-main);
+    color: var(--primary-main);
 }
 
 .filled {
 
+}
+
+.filled:hover {
+    background-color: var(--secondary-light);
 }

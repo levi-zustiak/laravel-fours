@@ -1,6 +1,7 @@
 import styles from './style.module.css';
 import { Motion, Presence } from '@motionone/solid';
 import { Show } from 'solid-js';
+import { Link } from 'inertia-solid';
 
 const textAnimations = {
   initial: {
@@ -26,7 +27,7 @@ const textAnimations = {
 
 export function Logo(props: { show: boolean }) {
   return (
-    <div class={styles.container}>
+    <Link href="/" class={styles.container}>
       <div class={styles.logo}>
         <svg
           width="48"
@@ -76,6 +77,6 @@ export function Logo(props: { show: boolean }) {
           </Motion.h3>
         </Show>
       </Presence>
-    </div>
+    </Link>
   );
 }
