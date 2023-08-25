@@ -1,6 +1,6 @@
 .container {
     padding: 1rem;
-    background-color: var(--primary-main);
+    background-color: var(--background-main);
     border: 2px solid var(--secondary-main);
     display: flex;
     flex-direction: column;

@@ -5,10 +5,9 @@ import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 import { PageAnimation } from '@components/PageAnimation';
 
-export default function Join({ flash }: any) {
+export default function Join() {
   const { wait, unwait } = useLobby();
   const [lobbyId, setLobbyId] = createSignal<string>('');
-  console.log(flash);
 
   const handleChange = ({ currentTarget }) => {
     const { value } = currentTarget;
