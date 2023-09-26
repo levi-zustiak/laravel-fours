@@ -11,11 +11,7 @@
     grid-area: main;
     display: flex;
     flex-direction: column;
-}
-
-.content {
-    margin-top: 250px;
-    align-self: center;
+    align-items: center;
 }
 
 .wipe {

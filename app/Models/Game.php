@@ -69,8 +69,11 @@ class Game extends Model
 
     public function handleMove(User $user, int $col)
     {
+        if (!$user->id = $this->current_player) {
+            abort(403);
+        }
+
         $board = $this->board;
-//        $board = array_fill(0, 7, array_fill(0, 6, null));
         $row = array_search(null, $this->board[$col]);
 
         $board[$col][$row] = [
@@ -85,7 +88,7 @@ class Game extends Model
 
         $this->update([
             'board' => $board,
-            'current_player' => !$this->current_player
+            'current_player' => $this->current_player === $this->player_one ? $this->player_two : $this->player_one,
         ]);
 
         GameUpdate::dispatch($this);

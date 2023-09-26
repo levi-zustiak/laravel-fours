@@ -3,7 +3,7 @@ import { createSignal, onCleanup } from 'solid-js';
 import { useLobby } from '@contexts/LobbyContext';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
-import { PageAnimation } from '@components/PageAnimation';
+import { AnimatedContainer } from '@components/AnimatedContainer';
 
 export default function Join() {
   const { wait, unwait } = useLobby();
@@ -32,12 +32,12 @@ export default function Join() {
   });
 
   return (
-    <PageAnimation>
+    <AnimatedContainer>
       <h1>Join</h1>
       <form onSubmit={submit}>
         <Input name="lobby_id" value={lobbyId()} onChange={handleChange} />
         <Button type="submit">Submit</Button>
       </form>
-    </PageAnimation>
+    </AnimatedContainer>
   );
 }

@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "lint:fix": "eslint . --fix"
     },
     "devDependencies": {
         "@types/node": "^18.14.0",

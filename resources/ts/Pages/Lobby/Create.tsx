@@ -2,7 +2,7 @@ import { Lobby } from '@/types/lobby.types';
 import { Link } from 'inertia-solid';
 import { onCleanup, onMount } from 'solid-js';
 import { useLobby } from '@contexts/LobbyContext';
-import { PageAnimation } from '@components/PageAnimation';
+import { AnimatedContainer } from '@components/AnimatedContainer';
 import { animate, stagger } from 'motion';
 import { Button } from '@components/Button';
 
@@ -38,7 +38,7 @@ export default function Create({ lobby }: Props) {
   onCleanup(() => unwait(lobby.id));
 
   return (
-    <PageAnimation>
+    <AnimatedContainer>
       <div
         style={{
           border: '3px solid var(--secondary-main)',
@@ -133,6 +133,6 @@ export default function Create({ lobby }: Props) {
           </Button>
         </div>
       </div>
-    </PageAnimation>
+    </AnimatedContainer>
   );
 }

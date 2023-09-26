@@ -18,7 +18,7 @@ return new class extends Migration {
                 ->cascadeOnDelete();
             $table->foreignId('player_one')->constrained(table: 'users');
             $table->foreignId('player_two')->constrained(table: 'users');
-            $table->boolean('current_player');
+            $table->foreignId('current_player')->constrained(table: 'users');
             $table->json('board');
             $table->boolean('in_progress')->default(true);
             $table->timestamps();

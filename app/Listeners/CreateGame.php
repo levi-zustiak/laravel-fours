@@ -20,12 +20,15 @@ class CreateGame
     public function handle(Connected $event): void
     {
         $lobby = $event->lobby;
-        $currentPlayer = (bool)random_int(0, 1);
+        $first = (bool)random_int(0, 1);
+
+        $player_one = $first ? $lobby->host_id : $lobby->peer_id;
+        $player_two = $first ? $lobby->peer_id : $lobby->host_id;
 
         $game = $lobby->game()->create([
-            'player_one' => $currentPlayer ? $lobby->host_id : $lobby->peer_id,
-            'player_two' => $currentPlayer ? $lobby->peer_id : $lobby->host_id,
-            'current_player' => $currentPlayer,
+            'player_one' => $player_one,
+            'player_two' => $player_two,
+            'current_player' => $player_one,
             'board' => array_fill(0, 7, array_fill(0, 6, null)),
         ]);
 

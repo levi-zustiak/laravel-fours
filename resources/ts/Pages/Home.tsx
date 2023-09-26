@@ -1,12 +1,12 @@
 import { Card } from '@components/Card';
 import { Icon } from '@components/Icon';
 import { router } from 'inertia-solid';
-import { PageAnimation } from '@components/PageAnimation';
+import { AnimatedContainer } from '@components/AnimatedContainer';
 import { Motion } from '@motionone/solid';
 
 export default function Home() {
   return (
-    <PageAnimation>
+    <AnimatedContainer>
       <Motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,6 +40,6 @@ export default function Home() {
           slots={{ icon: <Icon name="UserPlus" /> }}
         />
       </Motion.div>
-    </PageAnimation>
+    </AnimatedContainer>
   );
 }
